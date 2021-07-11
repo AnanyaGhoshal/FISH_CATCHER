@@ -21,12 +21,20 @@ class Seaf{
     display(){
 
         var pos = this.body.position;  
-       
+
+        if(this.body.position.x<128 && this.body.position.y<500){
+            string1.attach(this.body);
+            console.log(string1.pointB);
+           // this.body.position.x = 128;
+           // this.body.position.y = 250;
+            score++;
+        }
+        
         push();  
         fill("brown");
         stroke("brown");
         imageMode(CENTER);
-       // ellipseMode(RADIUS);
+        ellipseMode(RADIUS);
         image(this.image,pos.x,pos.y,this.radius*5,this.radius*5);
         pop();
 

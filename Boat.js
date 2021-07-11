@@ -17,7 +17,6 @@ class Boat{
         this.height = height;
         this.image = loadImage("boat.png");
         this.image2 = loadImage("fisher2.png");
-        this.image3 = loadImage("tenor.gif");
         World.add(world,this.body);
 
     }
@@ -25,6 +24,7 @@ class Boat{
     display(){
 
         var pos = this.body.position;
+       // console.log(this.body.speed);
         push();
         fill("brown");
         stroke("brown");

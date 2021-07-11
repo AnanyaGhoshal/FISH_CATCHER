@@ -6,14 +6,14 @@ class Shark{
 
             'isStatic':false,
             'restitution':0.5,
-            'friction':0.03,
-            'density':0.01
+            'friction':0.05,
+            'density':0.03
 
         }
 
-        this.body = Bodies.circle(x,y,10,options);
-        this.radius = 10;
-        //this.image = loadImage("goldfish.png");
+        this.body = Bodies.circle(x,y,20,options);
+        this.radius = 20;
+        //this.image = loadImage("shark.jpg");
         World.add(world,this.body);
 
     }
