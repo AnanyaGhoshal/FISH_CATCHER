@@ -7,7 +7,8 @@ var engine, world;
 var raindrops = []; 
 var gfish = [];
 var shark = [];
-var boat, string, bgImg, rod, string1, string3;
+var boat, string, bgImg, rod, string1, string3, hook, bulet;
+var shoot;
 var score;
 var gameState ="play";
 
@@ -24,13 +25,19 @@ function setup(){
     engine = Engine.create();
     world = engine.world;
     
+    hook = Bodies.rectangle(430,480,10,10,{isStatic:true});
+    World.add(world,hook);
+    
     boat = new Boat(150,405,100,10);
     gfish.push(new Seaf(1200, 500));
-    rod = new Fishrod(350,330,100,50,boat.angle);
-    string = new Slingshot(boat.body,{x:0,y:0},{x:150,y:415});
-   // string1 = new Slingshot(rod.body,{x:0,y:30},{x:330,y:380});
-    shark.push(new Shark(1200 , 550));
+    rod = new Fishrod(300,400,200,100,boat.angle);
+    string = new Slingshot(boat.body,{x:20,y:20},{x:150,y:415});
+    string1 = new Slingshot(hook.body,{x:0,y:30},{x:430,y:490});
+    shark.push(new Shark(1200 , 350));
+    shoot = createButton('Shoot');
     score = 0;
+
+    shoot.position(1125,550);
 
     
 }
@@ -40,6 +47,8 @@ function draw(){
     background(bgImg);
 
     Engine.update(engine);
+
+    rect(hook.position.x,hook.position.y,10,10);
 
 
     //rod.body.position.x = boat.body.position.x+140;
@@ -60,16 +69,19 @@ function draw(){
         text("GAME OVER !!!",500,300);
     }
 
+    
+    
+    
+
     spawnFish();
 
     boat.display();
     rod.display();
-    console.log(rod.body.angle);
-    //string1.display();
+    string.display();
 
     fill(0);
     textSize(20);
-    text("Score: "+score,1100,50);
+    text("Score: "+score,1080,50);
 
     
 } 
@@ -79,15 +91,19 @@ function mouseDragged(){
     Matter.Body.setPosition(rod.body,{x:mouseX, y:mouseY});
 }
 
-function keyPressed(){
+function mousePressed(){
 
-    if(keyCode===37){
-        boat.body.position.x -=10;
+    if(shoot.button.mousePressed){
+        Matter.Body.applyForce(hook.body,hook.body.position,{x:100,y:-200});
     }
 
-    if(keyCode===39){
-        boat.body.position.x +=10;
-    }
+ //if(keyCode===32){
+ //    bulet.display
+ //}
+
+  //if(keyCode===39){
+  //    boat.body.position.x +=10;
+  //}
 
 }
 
@@ -95,7 +111,7 @@ function keyPressed(){
 function spawnFish(){
 
     if(gfish.length>0){
-        gfish.push(new Seaf(1200,random(350,600)));
+        gfish.push(new Seaf(1200,random(420,600)));
     }
 
     for(var i =0; i<gfish.length;i=i+20){
@@ -105,7 +121,7 @@ function spawnFish(){
     }
 
   if(shark.length>0){
-      shark.push(new Shark(1190, random(300,400)));
+      shark.push(new Shark(1200, random(430,450)));
   }
   
   for(var i = 0; i<shark.length; i=i+200){

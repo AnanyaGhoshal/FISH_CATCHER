@@ -13,7 +13,7 @@ class Shark{
 
         this.body = Bodies.circle(x,y,20,options);
         this.radius = 20;
-        //this.image = loadImage("shark.jpg");
+        this.image = loadImage("shark.jpg");
         World.add(world,this.body);
 
     }
@@ -25,9 +25,9 @@ class Shark{
         push();  
         fill("brown");
         stroke("brown");
-        //imageMode(CENTER);
+        imageMode(CENTER);
         ellipseMode(RADIUS);
-        circle(pos.x,pos.y,this.radius,this.radius);
+        image(this.image,pos.x,pos.y,this.radius*15,this.radius*4);
         pop();
 
     }

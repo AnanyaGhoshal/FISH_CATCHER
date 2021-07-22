@@ -11,6 +11,7 @@ class Fishrod{
         this.height = height;
         this.image = loadImage("rod.png");
         World.add(world,this.body);
+        Matter.Body.setAngle(this.body,PI/4);
 
     }
 
@@ -20,21 +21,24 @@ class Fishrod{
         var angle = this.body.angle;
 
 
-        if(keyIsDown(DOWN_ARROW) && angle<1 && angle>0.6){
+        if(keyIsDown(DOWN_ARROW) && angle<1.0){
             angle+=0.01;
             Matter.Body.setAngle(this.body,angle);
-            console.log(this.body.angle);
+            //console.log(this.body.angle);
         }
-        if(keyIsDown(UP_ARROW) && angle>0.6 && angle<1){
+        if(keyIsDown(UP_ARROW) && angle>0.7){
             angle -=0.01;
             Matter.Body.setAngle(this.body,angle);
+        }
+        if(keyIsDown(RIGHT_ARROW) && this.body.position.x<340){
+            this.body.position.x +=1;
         }
 
         push();
         translate(pos.x,pos.y);
         rotate(angle);
-        fill("brown");
-        rectMode(RADIUS);
+       //fill("brown");
+       //rectMode(RADIUS);
         imageMode(CENTER);
         image(this.image,0,0,this.width*2,this.height);
         pop();
