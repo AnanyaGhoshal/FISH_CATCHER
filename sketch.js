@@ -28,10 +28,10 @@ function setup(){
     hook = Bodies.rectangle(430,480,10,10,{isStatic:true});
     World.add(world,hook);
     
-    boat = new Boat(150,405,100,10);
+    boat = new Boat(150,400,100,10);
     gfish.push(new Seaf(1200, 500));
     rod = new Fishrod(300,400,200,100,boat.angle);
-    string = new Slingshot(boat.body,{x:20,y:20},{x:150,y:415});
+    string = new Slingshot(boat.body,{x:0,y:0},{x:150,y:400});
     string1 = new Slingshot(hook.body,{x:0,y:30},{x:430,y:490});
     shark.push(new Shark(1200 , 350));
     shoot = createButton('Shoot');
@@ -54,7 +54,7 @@ function draw(){
     //rod.body.position.x = boat.body.position.x+140;
     //rod.body.position.y = boat.body.position.y-20;
 
-    if(boat.body.speed<0.03){
+    if(boat.body.speed<0.02){
         string.fly();
     }
     if(boat.body.position.y>550){
@@ -69,8 +69,6 @@ function draw(){
         text("GAME OVER !!!",500,300);
     }
 
-    
-    
     
 
     spawnFish();
