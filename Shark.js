@@ -5,9 +5,9 @@ class Shark{
         var options={
 
             'isStatic':false,
-            'restitution':0.5,
-            'friction':0.05,
-            'density':0.03
+            'restitution':0.2,
+            'friction':0.15,
+            'density':0.1
 
         }
 

@@ -34,7 +34,7 @@ class Slingshot{
 
         push();
         stroke("brown");
-        strokeWeight(5);       
+        strokeWeight(10);       
         line(pointA.x,pointA.y,pointB.x,pointB.y);
         pop();
         }

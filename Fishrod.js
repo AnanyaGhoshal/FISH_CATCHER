@@ -9,7 +9,8 @@ class Fishrod{
         this.body = Bodies.rectangle(x,y,width,height,options);
         this.width = width;
         this.height = height;
-        this.image = loadImage("rod.png");
+        this.rodangle = rodangle;
+        //this.image = loadImage("rod.png");
         World.add(world,this.body);
         Matter.Body.setAngle(this.body,PI/4);
 
@@ -20,7 +21,7 @@ class Fishrod{
         var pos = this.body.position;
         var angle = this.body.angle;
 
-
+        if(gameState!=="end"){
         if(keyIsDown(DOWN_ARROW) && angle<1.0){
             angle+=0.01;
             Matter.Body.setAngle(this.body,angle);
@@ -37,11 +38,13 @@ class Fishrod{
         push();
         translate(pos.x,pos.y);
         rotate(angle);
-       //fill("brown");
-       //rectMode(RADIUS);
+        fill("brown");
+        rectMode(CENTER);
         imageMode(CENTER);
-        image(this.image,0,0,this.width*2,this.height);
+        image(rod1,0,0,this.width*2,this.height);
         pop();
     }
+    }
+
     }
 

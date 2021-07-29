@@ -13,7 +13,6 @@ class Seaf{
 
         this.body = Bodies.circle(x,y,10,options);
         this.radius = 10;
-        this.image = loadImage("goldfish.png");
         World.add(world,this.body);
 
     }
@@ -22,22 +21,17 @@ class Seaf{
 
         var pos = this.body.position;  
 
-        if(this.body.position.x<128 && this.body.position.y>450){
-            string1.attach(this.body);
-            //console.log(string1.pointB);
-            score++;
-        }
-        if(string1.attach(this.body)){
-            Matter.Body.setVelocity(this.body,{x:0,y:0});
-        }
-        
         push();  
         fill("brown");
         stroke("brown");
         imageMode(CENTER);
         ellipseMode(RADIUS);
-        image(this.image,pos.x,pos.y,this.radius*5,this.radius*5);
+        image(fishImg,pos.x,pos.y,this.radius*5,this.radius*5);
         pop();
 
+        
+
     }
+
+    
 }
