@@ -12,7 +12,7 @@ class Fishrod{
         this.rodangle = rodangle;
         //this.image = loadImage("rod.png");
         World.add(world,this.body);
-        Matter.Body.setAngle(this.body,PI/4);
+        Matter.Body.setAngle(this.body,PI/6);
 
     }
 
@@ -41,7 +41,7 @@ class Fishrod{
         fill("brown");
         rectMode(CENTER);
         imageMode(CENTER);
-        image(rod1,0,0,this.width*2,this.height);
+        image(gun1,0,0,this.width,this.height);
         pop();
     }
     }

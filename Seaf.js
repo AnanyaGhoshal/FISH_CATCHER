@@ -18,20 +18,17 @@ class Seaf{
     }
 
     display(){
-
+      
         var pos = this.body.position;  
 
         push();  
-        fill("brown");
-        stroke("brown");
+       // fill("brown");
+        //stroke("brown");
         imageMode(CENTER);
-        ellipseMode(RADIUS);
+       // ellipseMode(RADIUS);
         image(fishImg,pos.x,pos.y,this.radius*5,this.radius*5);
         pop();
-
-        
-
+       
     }
-
     
 }
