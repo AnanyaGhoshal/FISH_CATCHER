@@ -11,21 +11,14 @@ class Bullet{
         this.height = 15;
         this.speed = 0.05;
         World.add(world,this.body);
-       // Matter.Body.setAngle(this.body,PI/6);
-    }
-
-    shoot(){
-        var newAngle = rod.angle-0.5;
-        var velocity = p5.Vector.fromAngle(newAngle);
-        velocity.mult(20);
-        Matter.Body.setStatic(this.body,{isStatic:false});
-        Matter.Body.setVelocity(this.body,{x:velocity.x,y:velocity.y});          
+        Matter.Body.setAngle(this.body,PI/6);
     }
 
     display(){
 
         var pos = this.body.position;
         var angle = this.body.angle;
+        this.body.angle = rod.body.angle;
 
         push();
         translate(pos.x,pos.y);

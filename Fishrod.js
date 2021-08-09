@@ -41,7 +41,7 @@ class Fishrod{
         fill("brown");
         rectMode(CENTER);
         imageMode(CENTER);
-        image(gun1,0,0,this.width,this.height);
+        image(image1,0,0,this.width,this.height);
         pop();
     }
     }
