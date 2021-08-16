@@ -20,9 +20,9 @@ class Seaf{
 
     display(){
 
-        if(this.body.position.x>380 && this.body.position.x>410 && this.body.position.y>350 && this.body.position.y<370){
+        if(this.body.position.x>380 && this.body.position.x<410 && this.body.position.y>350 && this.body.position.y<370){
 
-            World.remove(world,this.body);
+          //  World.remove(world,this.body);
 
             push();
             this.Visiblity = this.Visiblity - 5;
@@ -37,7 +37,7 @@ class Seaf{
        // fill("brown");
         //stroke("brown");
         imageMode(CENTER);
-       // ellipseMode(RADIUS);
+        ellipseMode(RADIUS);
         image(fishImg,pos.x,pos.y,this.radius*5,this.radius*5);
         pop();
        
