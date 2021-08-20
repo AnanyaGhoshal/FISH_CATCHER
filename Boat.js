@@ -28,10 +28,10 @@ class Boat{
         push();
         //fill("brown");
         //stroke("brown");
-        rectMode(CENTER);
+        //rectMode(CENTER);
         imageMode(CENTER);
-        image(this.image,pos.x,pos.y,this.width,this.height*15);
-        image(this.image2,pos.x+170,pos.y-100,this.width*0.2,this.height*10);
+        image(this.image,pos.x,pos.y,this.width,this.height*2);
+        image(this.image2,pos.x+170,pos.y-100,100,120);
         pop();
 
     }

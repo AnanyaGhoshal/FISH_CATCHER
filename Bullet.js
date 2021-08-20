@@ -6,9 +6,8 @@ class Bullet{
         friction: 1.0,
         density: 1.0,    
         }
-        this.body = Bodies.rectangle(x,y,15,15,options);
-        this.width = 15;
-        this.height = 15;
+        this.body = Bodies.circle(x,y,15,options);
+        this.r = 15;
         this.speed = 0.05;
         World.add(world,this.body);
         Matter.Body.setAngle(this.body,PI/6);
@@ -24,8 +23,8 @@ class Bullet{
         translate(pos.x,pos.y);
         rotate(angle);
         fill(0);
-        rectMode(CENTER);
-        rect(pos.x,pos.y,this.width,this.height);
+        ellipseMode(CENTER);
+        ellipse(pos.x,pos.y,this.r,this.r);
         pop();
     }
 }

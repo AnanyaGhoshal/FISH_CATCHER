@@ -38,8 +38,8 @@ class Fishrod{
         push();
         translate(pos.x,pos.y);
         rotate(angle);
-        fill("brown");
-        rectMode(CENTER);
+        //fill("brown");
+        //rectMode(CENTER);
         imageMode(CENTER);
         image(image1,0,0,this.width,this.height);
         pop();

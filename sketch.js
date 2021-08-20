@@ -7,8 +7,8 @@ var engine, world;
 var bullet = []; 
 var gfish = [];
 var shark = [];
-var boat, string, bgImg, rod, string1, string3, hook, rod1, gun1, fishImg;
-var rodB, gunB, gunB1, rodB1, pos, image1;
+var boat, string, bgImg, rod, string1, string3, rod1, gun1, fishImg;
+var rodB, gunB, gunB1, rodB1, pos, image1, houqe;
 var fish, form;
 var seaSound, shootingSound, scream, feedBack, ok;
 var visiblity = 255;
@@ -37,13 +37,13 @@ function setup(){
    // hook = Bodies.rectangle(490,500,10,10,{isStatic:true});
    // World.add(world,hook);
     
-    boat = new Boat(150,350,500,10);
+    boat = new Boat(150,350,500,70);
     bullet.push(new Bullet(300,115));
     gfish.push(new Seaf(1200, 420));
     rod = new Fishrod(400,330,200,100,boat.angle);
     string = new Slingshot(boat.body,{x:0,y:0},{x:150,y:350});
     shark.push(new Shark(1200 , 480));
-    hook = new Bullet(400,330);
+    houqe = new Bullet(400,330);
   
     form = new Form();
 
@@ -82,7 +82,7 @@ function draw(){
 
     boat.display();
     rod.display();
-    hook.display();
+    houqe.display();
 
     if (mouseX > 1124 && mouseX < 1140 && mouseY > 60 && mouseY < 80) {
         robB= true;
@@ -159,62 +159,77 @@ function spawnFish(){
   if(gameState!=="end"){
 
     if(gfish.length>0){
-        gfish.push(new Seaf(1200,random(400,600)));
+        gfish.push(new Seaf(1200,random(450,600)));
     }
 
-    for(var i =0; i<gfish.length;i=i+15){
+    for(var i =0; i<gfish.length;i=i+10){
         Matter.Body.setVelocity(gfish[i].body,{x:-5,y:0});
         gfish[i].display();
-        
-        var collision = Matter.SAT.collides(rod.body,gfish[i].body);
 
-        if(collision.collided){
-            score = score +5;
-            fish = fish+1;
-            Matter.World.remove(world,gfish[i].body);           
+        if(image1===rod1){
+
+            var collision = Matter.SAT.collides(rod.body,gfish[i].body);
+
+            if(collision.collided){
+                score = score +5;
+                fish = fish+1;
+                Matter.World.remove(world,gfish[i].body);
+                gfish.splice(1,i);
+                i--;
+                          
+            }
         }
         
+        
     }
 
+    if(bullet.length>0){
+        bullet.push(new Bullet(300,115));
+    }
+
+    if(keyIsDown(LEFT_ARROW) && image1===gun1){
+    for(var i=0; i<bullet.length; i=i+15){
+      Matter.Body.setStatic(bullet[i].body,false);
+      Matter.Body.setVelocity(bullet[i].body,{x:5,y:2});
+      bullet[i].display();
+      shootingSound.play();
+
+    
+      
+    }
+}
+
     if(shark.length>0){
-        shark.push(new Shark(1200, random(400,600)));
+        shark.push(new Shark(1200, random(450,600)));
     }
     
-    for(var i = 0; i<shark.length; i=i+100){
+    for(var i = 0; i<shark.length; i=i+65){
         Matter.Body.setVelocity(shark[i].body,{x:-5,y:0});
         shark[i].display();
   
-        var collision = Matter.SAT.collides(boat.body,shark[i].body);
-  
-        if(collision.collided){
-            string.fly();
-        }
-    }
-
-        if(bullet.length>0){
-            bullet.push(new Bullet(300,115));
-        }
-
-        if(keyIsDown(LEFT_ARROW)){
-        for(var i=0; i<bullet.length; i=i+15){
-          Matter.Body.setStatic(bullet[i].body,false);
-          Matter.Body.setVelocity(bullet[i].body,{x:5,y:2});
-          bullet[i].display();
-          shootingSound.play();
-
-          var collision = Matter.SAT.collides(shark[i].body,bullet[i].body);
+        var collision = Matter.SAT.collides(bullet[i].body,shark[i].body);
 
         //  console.log(shark[i].body);
-
+    
           if(collision.collided){
-              Matter.Body.setVelocity(shark[i].body,{x:10,y:0});
-              score = score+2;
 
+              Matter.Body.setVelocity(shark[i].body,{x:0,y:5});
+              Matter.World.remove(world,shark[i].body);
+              shark.splice(1,i);
+              i--;
+              score = score+2;
+    
+          }
+
+          var collision1 = Matter.SAT.collides(boat.body,shark[i].body);
+  
+          if(collision1.collided){
+              string.fly();
           }
          
-          
-        }
     }
+
+
 }
    
   

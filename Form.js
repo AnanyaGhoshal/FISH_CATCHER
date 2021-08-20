@@ -25,7 +25,7 @@ class Form{
 
         this.button.position(580,350);
         this.button.style('background','pink');
-        this.title1.html("START THE GAME!!");
+        this.title1.html("CATCH THE FISH!!");
         this.title1.position(500,20);
         this.title1.style('color','maroon')
         this.title2.html("Press Rod button to display rod and gun to display gun. Press UP and DOWN arrow keys to move the rod or gun.");
