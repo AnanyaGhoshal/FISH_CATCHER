@@ -5,3 +5,15 @@ html, body {
 canvas {
   display: block;
 }
+
+.Button {
+  width:60px;
+  height:20px;
+  background-color: rgb(238, 153, 153);
+  background-size: cover;
+  border-radius: 30px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  outline: none;
+}
